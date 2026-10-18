@@ -1,0 +1,132 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { photos, type PhotoKey } from '../lib/photos';
+import bios from '../../data/bios.json';
+
+const chapters: { id: string; title: string; text: string; photo: PhotoKey }[] = [
+  { id: 'voice', title: 'The voice', photo: 'portrait-thinking',
+    text: "It started with a microphone at my university's campus radio station, in my first year. Then came scripts for a commercial station and, when they needed someone on air, a show of my own. Radio is still home: today I co-host Vibe Shift, live on weekday radio." },
+  { id: 'screen', title: 'The screen', photo: 'frame-hands',
+    text: "Since 2017 I've been on national television: youth and arts programmes, long-form interviews with emerging artists, and now Friday Night Rave, the late-night entertainment show I co-host." },
+  { id: 'stage', title: 'The stage', photo: 'portrait-leather',
+    text: 'Before the cameras there was the stage. I toured the United States with the Afrizo Band in 2014, then spent years in theatre as a director, scriptwriter and music director. In 2024 the Kenya Theatre Awards named me winner of Best Musical Arrangement/Score/Adaptation for Jaboya.' },
+  { id: 'room', title: 'The room', photo: 'event-night',
+    text: "Put it together and you get a host who works to the second, listens like an interviewer and paces a programme like a show. I've co-hosted the Kenya Theatre Awards and MC'd the launch of the Kenya International Theatre Festival, and I bring the same craft to conferences, launches and executive conversations." },
+];
+const ways = [
+  { t: 'I prepare like a producer', d: 'Run-of-show, names, titles and pronunciations are settled before the day.' },
+  { t: 'I listen like an interviewer', d: 'I follow what speakers actually say, not just the script.' },
+  { t: 'I move like a performer', d: 'Transitions, energy and timing are shaped, not improvised.' },
+  { t: 'I connect like a storyteller', d: 'I find the thread that ties a long programme together.' },
+];
+---
+<Base title="About me" description="Brian Aseli: a broadcaster by trade and a performer by instinct. Radio, television and theatre, brought together for the rooms he hosts.">
+  <PageHero kicker="About me" title="A broadcaster by trade. A performer by instinct." lede="Radio taught me timing. Television taught me presence. Theatre taught me the room." stage="spotlight" cutout="leather" word="ASELI" />
+
+  <section class="room section" aria-labelledby="story-h">
+    <h2 id="story-h" class="sr-only">Brian's story</h2>
+    <div class="wrap story" data-story>
+      <div class="pin" aria-hidden="true">
+        <div class="frame">
+          {chapters.map((c, i) => (
+            <Image class:list={['ph', { on: i === 0 }]} data-ph={c.id} src={photos[c.photo].src} alt="" widths={[500, 800, 1100]} sizes="(min-width: 960px) 40vw, 90vw" style={`object-position:${photos[c.photo].pos}`} loading={i === 0 ? 'eager' : 'lazy'} />
+          ))}
+        </div>
+        <ol class="dots">{chapters.map((c, i) => <li class:list={{ on: i === 0 }} data-dot={c.id}>{c.title}</li>)}</ol>
+      </div>
+      <div class="chapters">
+        {chapters.map((c) => (
+          <article class="chapter" data-chapter={c.id}>
+            <Image class="ph-mobile" src={photos[c.photo].src} alt={photos[c.photo].alt} widths={[500, 800]} sizes="92vw" style={`object-position:${photos[c.photo].pos}`} loading="lazy" />
+            <h3 data-split>{c.title}</h3>
+            <p>{c.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="stage melt section ways grain" aria-labelledby="ways-h">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="head head--split">
+        <h2 id="ways-h" class="h1" data-split>The voice. The room. The story.</h2>
+        <p class="lede reveal">Clear communication, sharp listening, confident delivery, and an instinct for making ideas engaging without losing substance.</p>
+      </div>
+      <ul class="ways-list">
+        {ways.map((w, i) => <li class="reveal" style={`--d:${i * 0.1}s`}><span class="wt">{w.t}</span><span class="wd">{w.d}</span></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="room-2 section" id="bios" aria-labelledby="bios-h">
+    <div class="wrap">
+      <div class="head head--split">
+        <div><p class="kicker">For organisers</p><h2 id="bios-h" class="h1" data-split>Bios, ready to paste.</h2></div>
+        <p class="lede reveal">Written in the third person for your programme, press release and MC script.</p>
+      </div>
+      <div class="bios">
+        {bios.map((b) => (
+          <article class="bio">
+            <header><h3>{b.label}</h3><span class="muted">{b.text.split(/\s+/).length} words</span></header>
+            <p data-bio-text>{b.text}</p>
+            <button type="button" class="btn btn--ghost" data-copy>Copy text</button>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .story { display: grid; gap: 3rem; }
+  .pin { display: none; }
+  .chapter { display: grid; gap: 1rem; padding-block: 1.5rem; }
+  .chapter h3 { font-size: var(--step-4); letter-spacing: -0.045em; }
+  .chapter p { font-size: var(--step-1); line-height: 1.55; color: var(--text-2); max-width: 34ch; }
+  .ph-mobile { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--r-lg); }
+  @media (min-width: 960px) {
+    .story { grid-template-columns: 1fr 1fr; gap: 5rem; }
+    .pin { display: block; position: sticky; top: calc(var(--header-h) + 2rem); height: calc(100svh - var(--header-h) - 4rem); }
+    .frame { position: relative; height: calc(100% - 3.5rem); border-radius: var(--r-lg); overflow: hidden; background: var(--stage); box-shadow: var(--shadow); }
+    .frame :global(.ph) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.05); transition: opacity .8s var(--ease), transform 1.4s var(--ease-out); }
+    .frame :global(.ph.on) { opacity: 1; transform: none; }
+    .dots { list-style: none; padding: 0; display: flex; gap: 1.2rem; margin-top: 1.2rem; font-family: var(--font-display); font-size: .9rem; font-weight: 600; color: var(--text-2); }
+    .dots li { display: inline-flex; align-items: center; gap: .45rem; transition: color .3s; }
+    .dots li::before { content: ''; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid currentColor; transition: background-color .3s; }
+    .dots li.on { color: var(--text); }
+    .dots li.on::before { background: var(--copper); border-color: var(--copper); box-shadow: 0 0 10px var(--copper); }
+    .chapter { min-height: 78svh; align-content: center; }
+    .ph-mobile { display: none; }
+  }
+  .ways-list { list-style: none; padding: 0; border-top: 1px solid var(--stage-line); }
+  .ways-list li { display: grid; gap: .4rem; padding-block: 1.6rem; border-bottom: 1px solid var(--stage-line); transition: padding .4s var(--ease-out); }
+  @media (min-width: 860px) { .ways-list li { grid-template-columns: 1.2fr 1fr; align-items: baseline; gap: 2rem; } .ways-list li:hover { padding-left: 1.2rem; } }
+  .wt { font-family: var(--font-display); font-weight: 650; font-size: var(--step-3); letter-spacing: -0.04em; line-height: 1; transition: color .3s; }
+  .ways-list li:hover .wt { color: var(--copper); }
+  .wd { color: var(--mist); font-size: var(--step-1); }
+  .bios { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+  .bio { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-md); padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem; }
+  .bio header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .bio h3 { font-size: var(--step-1); }
+  .bio p { color: var(--text-2); flex: 1; }
+  .bio .btn { align-self: flex-start; min-height: 44px; }
+</style>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => btn.addEventListener('click', async () => {
+    const text = btn.closest('article')?.querySelector('[data-bio-text]')?.textContent || '';
+    try { await navigator.clipboard.writeText(text.trim()); btn.textContent = 'Copied'; } catch { btn.textContent = 'Select and copy manually'; }
+    setTimeout(() => (btn.textContent = 'Copy text'), 2200);
+  }));
+  const story = document.querySelector('[data-story]');
+  if (story && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const id = (e.target as HTMLElement).dataset.chapter;
+      story.querySelectorAll<HTMLElement>('[data-ph]').forEach((p) => p.classList.toggle('on', p.dataset.ph === id));
+      story.querySelectorAll<HTMLElement>('[data-dot]').forEach((d) => d.classList.toggle('on', d.dataset.dot === id));
+    }), { rootMargin: '-45% 0px -45% 0px' });
+    story.querySelectorAll('[data-chapter]').forEach((c) => io.observe(c));
+  }
+</script>

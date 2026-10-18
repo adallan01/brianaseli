@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, engagements, awards, byNewest } from '../lib/data';
+import ToneImage from '../components/ToneImage.astro';
+import { stages, stagePos, events, duo, type StageKey } from '../lib/photos';
+
+const credits = [...engagements, ...awards].sort(byNewest);
+const shows = [
+  { name: 'Friday Night Rave', when: 'Friday nights on TV', d: 'Late-night entertainment television, 10pm to midnight, which I co-host with Claudia Naisabwa.', stage: 'podium' as StageKey },
+  { name: 'Vibe Shift', when: 'Weekdays on radio', d: 'Four hours of live radio, 10am to 2pm, which I co-host with Claudia Naisabwa.', stage: 'spotlight' as StageKey },
+];
+---
+<Base title="Credits" description="Documented stage credits for Brian Aseli: awards-night co-host, festival-launch MC and Kenya Theatre Awards winner, plus the shows he hosts.">
+  <PageHero kicker="Credits" title="Big nights, on the record." lede="Every credit here links to the organiser's or publisher's own record." stage="gala" word="STAGE" />
+
+  <section class="room section" aria-labelledby="c-h">
+    <h2 id="c-h" class="sr-only">Stage credits and awards</h2>
+    <div class="wrap">
+      <ol class="credits">
+        {credits.map((c, i) => (
+          <li class="credit">
+            <div class="c-img tone-host reveal">{events[(c as any).image] && <ToneImage src={events[(c as any).image]} duo={duo[`event-${(c as any).image}`]} alt={((c as any).imageCredit || '').split('. Photo:')[0]} widths={[500, 900, 1200]} sizes="(min-width: 900px) 46vw, 92vw" pos="50% 35%" loading={i === 0 ? 'eager' : 'lazy'} />}<span class="c-date">{c.displayDate}</span>{(c as any).imageCredit && <span class="c-credit">Photo: {(c as any).imageCredit.split('Photo: ')[1]}</span>}</div>
+            <div class="c-body reveal" style="--d:.15s">
+              <span class={`badge ${c.section === 'award' ? 'badge--award' : 'badge--booking'}`}>{c.section === 'award' ? 'Award' : 'Hosted'}</span>
+              <h3 data-split>{(c as any).name}</h3>
+              <p class="c-role">{(c as any).detail}{c.venue ? `, ${c.venue}` : ''}</p>
+              <p class="muted">{c.demonstrates}</p>
+              <a href={c.url} target="_blank" rel="noopener" class="text-link">See the source<span class="sr-only">: {c.publisher} (opens in a new tab)</span></a>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <aside class="org">
+        <div>
+          <h3 class="h3">Did I host your event?</h3>
+          <p class="muted">Share a programme, post or photo and I'll add it here with its source.</p>
+        </div>
+        <a class="btn btn--ghost" href={`mailto:${site.contact.email}?subject=${encodeURIComponent('Event credit for Brian Aseli website')}`}>Send the details</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="stage melt section grain" aria-labelledby="shows-h">
+    <div class="beams" aria-hidden="true"></div>
+    <div class="wrap">
+      <div class="head head--split">
+        <div><p class="kicker">On air now</p><h2 id="shows-h" class="h1" data-split>The shows I host.</h2></div>
+        <p class="lede reveal">Live, every week. It's where I sharpen everything I bring to your stage.</p>
+      </div>
+      <ul class="shows">
+        {shows.map((s) => (
+          <li class="show">
+            <Image src={stages[s.stage]} alt="" style={`object-position:${stagePos[s.stage]}`} widths={[600, 1000]} sizes="(min-width: 900px) 50vw, 92vw" loading="lazy" />
+            <div class="show-body"><p class="when">{s.when}</p><h3>{s.name}</h3><p>{s.d}</p></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .credits { list-style: none; padding: 0; display: grid; gap: clamp(1.5rem, 1rem + 2vw, 3rem); }
+  .credit { display: grid; gap: 1.5rem; align-items: center; }
+  @media (min-width: 900px) { .credit { grid-template-columns: 1fr 1.1fr; gap: 3.5rem; } .credit:nth-child(even) .c-img { order: 2; } }
+  .c-img { position: relative; aspect-ratio: 16 / 11; border-radius: var(--r-lg); overflow: hidden; background: var(--stage); }
+  .c-img :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+  .credit:hover .c-img :global(img) { transform: scale(1.05); }
+  .c-img::after { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 45%, rgba(5,11,28,.8)); pointer-events: none; }
+  .c-credit { position: absolute; z-index: 2; right: 1rem; bottom: .8rem; font-size: .72rem; color: rgba(238,241,248,.7); }
+  .c-date { position: absolute; z-index: 2; left: 1.2rem; bottom: 1rem; font-family: var(--font-display); font-weight: 700; font-size: var(--step-3); letter-spacing: -0.04em; color: var(--ivory); text-shadow: 0 4px 30px rgba(0,0,0,.6); }
+  .c-body { display: grid; gap: .8rem; justify-items: start; }
+  .c-body h3 { font-size: var(--step-3); letter-spacing: -0.04em; }
+  .c-role { font-weight: 700; }
+  .c-body .text-link { font-weight: 700; }
+  .org { margin-top: clamp(3rem, 2rem + 3vw, 5rem); display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center; padding: 2rem; border-radius: var(--r-lg); border: 1.5px dashed var(--line); }
+  .org > div { display: grid; gap: .5rem; max-width: 52ch; }
+  .shows { list-style: none; padding: 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+  .show { position: relative; min-height: 380px; border-radius: var(--r-lg); overflow: hidden; display: flex; isolation: isolate; }
+  .show :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+  .show::after { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(5,11,28,.1), rgba(5,11,28,.9) 75%); }
+  .show-body { margin-top: auto; padding: 1.8rem; display: grid; gap: .5rem; }
+  .when { color: var(--copper); font-weight: 700; }
+  .show h3 { font-size: var(--step-3); letter-spacing: -0.04em; }
+  .show-body p:last-child { color: rgba(238,241,248,.85); max-width: 44ch; }
+</style>
