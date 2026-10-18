@@ -1,0 +1,157 @@
+[
+  {
+    "id": "corporate",
+    "name": "Corporate & Conference Hosting",
+    "short": "Plenaries, summits and leadership forums that stay on time and on message.",
+    "need": "A full-day agenda, senior speakers, sponsors to acknowledge, and a room that drifts after lunch.",
+    "role": "I anchor the programme from opening to close: framing each session, introducing speakers properly and managing time without making it visible.",
+    "contributes": [
+      "Run-of-show review and timing notes before the day",
+      "Speaker introductions written from real bios, with names and titles checked",
+      "Transitions that carry your theme from one session to the next",
+      "Calm recovery when slides, microphones or speakers run late"
+    ],
+    "outcome": "A programme that feels deliberate, with every speaker set up to land their message.",
+    "formats": [
+      "Conferences",
+      "Leadership forums",
+      "AGMs",
+      "Industry summits",
+      "Corporate celebrations"
+    ],
+    "tags": [
+      "corporate"
+    ],
+    "photo": "portrait-smile",
+    "stage": "event-hall"
+  },
+  {
+    "id": "mc",
+    "name": "Master of Ceremonies",
+    "short": "Galas, awards and launches with energy, warmth and a firm hand on the clock.",
+    "need": "An evening with many moving parts: awards, performances, dinner service, VIP remarks, and one chance to get it right.",
+    "role": "I carry the show. I set the tone, build anticipation, keep the pace and make every winner and guest feel the moment is theirs.",
+    "contributes": [
+      "Script and cue sheet worked through with your producer",
+      "Protocol, names and titles confirmed in advance",
+      "Energy pitched to the room: celebratory, never noise for its own sake",
+      "Live adjustments when the running order changes"
+    ],
+    "outcome": "An event your guests talk about afterwards, for the right reasons.",
+    "formats": [
+      "Awards galas",
+      "Product launches",
+      "Festival launches",
+      "Institutional functions",
+      "Corporate dinners"
+    ],
+    "tags": [
+      "mc"
+    ],
+    "photo": "stage-mic",
+    "stage": "gala"
+  },
+  {
+    "id": "moderation",
+    "name": "Moderation & Facilitation",
+    "short": "Panels and executive conversations that sound like real conversations.",
+    "need": "Expert panellists, a short slot and an audience that wants substance, not four speeches in a row.",
+    "role": "I prepare the conversation with the panel, ask the follow-up the audience is thinking, balance the voices and bring it to a clear close.",
+    "contributes": [
+      "Briefing calls or notes with each panellist",
+      "A question plan built around your objectives",
+      "Fair airtime, and gentle control of dominant voices",
+      "Audience Q&A kept on topic"
+    ],
+    "outcome": "Clear takeaways for the audience, and panellists who feel looked after.",
+    "formats": [
+      "Panel discussions",
+      "Fireside chats",
+      "CEO roundtables",
+      "Public dialogues",
+      "Live interviews"
+    ],
+    "tags": [
+      "moderation"
+    ],
+    "photo": "portrait-laugh",
+    "stage": "hexsphere"
+  },
+  {
+    "id": "entertainment",
+    "name": "Entertainment & Brand Experiences",
+    "short": "Activations, showcases and festivals that need real stage presence.",
+    "need": "A brand moment where the audience chose to be there, and can leave whenever they like.",
+    "role": "I bring late-night television energy and theatre timing to hold the audience, and land your message in my own voice.",
+    "contributes": [
+      "Audience interaction that feels spontaneous because it was planned",
+      "Brand messages delivered naturally, not read off a card",
+      "Smooth hand-offs to performers, DJs and guests",
+      "Reading the crowd: when to lift the room and when to let it breathe"
+    ],
+    "outcome": "Energy that holds, and a message people actually hear.",
+    "formats": [
+      "Brand activations",
+      "Live showcases",
+      "Festivals",
+      "Music and cultural events"
+    ],
+    "tags": [
+      "entertainment"
+    ],
+    "photo": "frame-hands",
+    "stage": "sparkle"
+  },
+  {
+    "id": "broadcast",
+    "name": "Broadcast & Interview Hosting",
+    "short": "Selected presenting and interview projects.",
+    "need": "A presenter for a branded series, a webcast, a hybrid event or a long-form interview.",
+    "role": "I bring studio discipline to your production: tight links, researched interviews and ease with cameras, cues and talkback.",
+    "contributes": [
+      "On-camera presenting and script input",
+      "Interview research and question development",
+      "Live-stream and hybrid-event presenting",
+      "Voice-over"
+    ],
+    "outcome": "Content that sounds broadcast-ready the first time.",
+    "formats": [
+      "Branded series",
+      "Webcasts and live streams",
+      "Long-form interviews",
+      "Voice-over"
+    ],
+    "tags": [
+      "broadcast"
+    ],
+    "note": "Availability depends on the project and my broadcasting commitments, and is subject to employer policy.",
+    "photo": "portrait-leather",
+    "stage": "spotlight"
+  },
+  {
+    "id": "creative",
+    "name": "Speaking & Creative",
+    "short": "Talks on storytelling and communication; creative direction and scripting.",
+    "need": "A speaker who talks about communication from practice, or a creative lead for a production.",
+    "role": "Drawing on broadcast and theatre, I speak on storytelling, effective communication, youth engagement and creative leadership, and take on selected creative direction, scripting and music direction.",
+    "contributes": [
+      "Keynotes and workshop sessions",
+      "Script and story development",
+      "Creative direction for stage and live productions",
+      "Music direction and arrangement"
+    ],
+    "outcome": "A session or production shaped by someone who has done the work, on air and on stage.",
+    "formats": [
+      "Keynotes",
+      "Workshops",
+      "Stage productions",
+      "Content development"
+    ],
+    "tags": [
+      "creative",
+      "theatre"
+    ],
+    "photo": "portrait-black-tee",
+    "stage": "brick"
+  }
+]

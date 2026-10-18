@@ -1,0 +1,53 @@
+{
+  "name": "Brian Aseli",
+  "signature": "The Most Bankable Host",
+  "signOff": "I host. I inspire. I leave a memory.",
+  "location": "Nairobi, Kenya",
+  "defaultDescription": "Brian Aseli is a Nairobi-based host, master of ceremonies and moderator known as The Most Bankable Host. Conferences, awards nights, launches and panel conversations, hosted with live-broadcast discipline.",
+  "contact": {
+    "phoneDisplay": "+254 724 000 741",
+    "phoneE164": "+254724000741",
+    "email": "brianaseli26@gmail.com",
+    "whatsappEnabled": false,
+    "_note": "Contact details come from Brian's own bio and booking poster. Confirm before launch (research/facts-to-confirm.md A1–A2)."
+  },
+  "social": [
+    {
+      "label": "Instagram",
+      "handle": "@brian_aseli",
+      "url": "https://www.instagram.com/brian_aseli/"
+    },
+    {
+      "label": "LinkedIn",
+      "handle": "Brian Aseli",
+      "url": "https://www.linkedin.com/in/brian-aseli-a724921b0/"
+    },
+    {
+      "label": "Facebook",
+      "handle": "brian.aseli",
+      "url": "https://www.facebook.com/brian.aseli"
+    }
+  ],
+  "showreel": {
+    "youtubeId": null,
+    "title": "Brian Aseli — Showreel",
+    "description": "",
+    "uploadDate": "",
+    "_note": "When a showreel exists, add its YouTube ID here. The hero button switches to 'Watch the showreel' automatically."
+  },
+  "form": {
+    "mode": "mailto",
+    "endpoint": "",
+    "showBudget": false,
+    "budgetBands": [
+      "Under KES 100,000",
+      "KES 100,000 – 250,000",
+      "KES 250,000 – 500,000",
+      "Above KES 500,000",
+      "Prefer to discuss"
+    ],
+    "_note": "mode: 'mailto' (opens visitor's email app, pre-filled), 'endpoint' (POST JSON to a form service — set endpoint or PUBLIC_ENQUIRY_ENDPOINT), or 'netlify' (Netlify Forms). See HANDOVER.md."
+  },
+  "testimonials": [],
+  "disclaimer": "Bookings are made directly with me. Independent engagements are not engagements of, or endorsed by, any media organisation I work with. Programme and station names are used for identification only, and external engagements are subject to applicable professional and employer policies."
+}
